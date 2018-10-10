@@ -2,7 +2,7 @@ package com.alexis.financeiro.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "lancamento")
@@ -36,12 +34,10 @@ public class Lancamento implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private TipoLancamento tipo;
-	@Temporal(TemporalType.DATE)
 	@Column(name = "data_vencimento", nullable = false)
-	private Date dataVencimento;
-	@Temporal(TemporalType.DATE)
-	@Column(name = "data_pagamento", nullable = false)
-	private Date dataPagamento;
+	private LocalDate dataVencimento;
+	@Column(name = "data_pagamento", nullable = true)
+	private LocalDate dataPagamento;
 
 	@Override
 	public int hashCode() {
@@ -108,19 +104,19 @@ public class Lancamento implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public Date getDataVencimento() {
+	public LocalDate getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(Date dataVencimento) {
+	public void setDataVencimento(LocalDate dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public Date getDataPagamento() {
+	public LocalDate getDataPagamento() {
 		return dataPagamento;
 	}
 
-	public void setDataPagamento(Date dataPagamento) {
+	public void setDataPagamento(LocalDate dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
 
