@@ -2,11 +2,11 @@ package com.alexis.financeiro.beans;
 
 import java.io.Serializable;
 
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class OlaBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
