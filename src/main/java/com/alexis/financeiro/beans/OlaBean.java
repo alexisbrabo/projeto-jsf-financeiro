@@ -1,10 +1,16 @@
 package com.alexis.financeiro.beans;
 
-import javax.faces.bean.ManagedBean;
+import java.io.Serializable;
 
-@ManagedBean
-public class OlaBean {
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
+@Named
+@ViewScoped
+public class OlaBean implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
 	private String nome;
 	private String sobrenome;
 	private String nomeCompleto;
