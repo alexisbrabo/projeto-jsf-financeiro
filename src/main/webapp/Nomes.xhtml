@@ -9,15 +9,19 @@
 
 <h:body>
 	<h:form>
-	Nome: <h:inputText value="#{nomesBean.nome}" binding="#{nomesBean.inputNome}" />
+	Nome: <h:inputText value="#{nomesBean.nome}" />
 		<br />
-		<h:commandButton value="Adicionar" action="#{nomesBean.adicionar}" binding="#{nomesBean.botaoAdicionar}"/>
+		<h:commandButton value="Adicionar" action="#{nomesBean.adicionar}" />
 		<br />
 		<ol>
 			<ui:repeat var="nome" value="#{nomesBean.nomes}">
 				<li>#{nome}</li>
 			</ui:repeat>
 		</ol>
+		<h:inputText onclick="this.value = '';"
+			onchange="this.value = this.value.toUpperCase();"
+			onmouseover="this.style.backgroundColor = 'yellow';"
+			onmouseout="this.style.backgroundColor = 'white';" />
 	</h:form>
 </h:body>
 

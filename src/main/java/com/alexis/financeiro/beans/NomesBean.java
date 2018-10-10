@@ -17,34 +17,15 @@ public class NomesBean implements Serializable {
 
 	private String nome;
 	private List<String> nomes = new ArrayList<>();
-	private HtmlInputText inputNome;
 
-	private HtmlCommandButton botaoAdicionar;
-
-	public void adicionar() {
+	public String adicionar() {
 		this.nomes.add(nome);
 
 		if (this.nomes.size() > 3) {
-			inputNome.setDisabled(true);
-			botaoAdicionar.setDisabled(true);
-			botaoAdicionar.setValue("Muitos nomes adicionados");
+			return "Ola?faces-redirect=true";
 		}
-	}
-
-	public HtmlInputText getInputNome() {
-		return inputNome;
-	}
-
-	public void setInputNome(HtmlInputText inputNome) {
-		this.inputNome = inputNome;
-	}
-
-	public HtmlCommandButton getBotaoAdicionar() {
-		return botaoAdicionar;
-	}
-
-	public void setBotaoAdicionar(HtmlCommandButton botaoAdicionar) {
-		this.botaoAdicionar = botaoAdicionar;
+		
+		return null;
 	}
 
 	public void setNomes(List<String> nomes) {
