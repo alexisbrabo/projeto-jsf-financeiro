@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.component.html.HtmlCommandButton;
-import javax.faces.component.html.HtmlInputText;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
