@@ -1,5 +1,8 @@
 package com.alexis.financeiro.beans;
 
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class OlaBean {
 
 	private String nome;

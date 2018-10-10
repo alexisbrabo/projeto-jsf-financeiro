@@ -7,17 +7,17 @@
 
 <h:body>
 	<h:form>
+		<h1>Olá #{olaBean.nomeCompleto}</h1>
 
-		<h1>Olá</h1>
-		Nome: <h:inputText />
-		
+		Nome: <h:inputText value="#{olaBean.nome}" />
+
 		<br />
 		
-		Sobrenome: <h:inputText />
-		
+		Sobrenome: <h:inputText value="#{olaBean.sobrenome}" />
+
 		<br />
-		
-		<h:commandButton value="Dizer olá" />
+
+		<h:commandButton value="Dizer olá" action="#{olaBean.dizerOla}" />
 
 	</h:form>
 </h:body>
