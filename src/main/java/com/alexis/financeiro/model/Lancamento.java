@@ -2,7 +2,7 @@ package com.alexis.financeiro.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,10 +38,10 @@ public class Lancamento implements Serializable {
 	private TipoLancamento tipo;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_vencimento", nullable = false)
-	private LocalDate dataVencimento;
+	private Date dataVencimento;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "data_vencimento", nullable = false)
-	private LocalDate dataPagamento;
+	@Column(name = "data_pagamento", nullable = false)
+	private Date dataPagamento;
 
 	@Override
 	public int hashCode() {
@@ -108,19 +108,19 @@ public class Lancamento implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public LocalDate getDataVencimento() {
+	public Date getDataVencimento() {
 		return dataVencimento;
 	}
 
-	public void setDataVencimento(LocalDate dataVencimento) {
+	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
 
-	public LocalDate getDataPagamento() {
+	public Date getDataPagamento() {
 		return dataPagamento;
 	}
 
-	public void setDataPagamento(LocalDate dataPagamento) {
+	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
 
