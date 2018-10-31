@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import com.alexis.bancodedados.JpaUtil;
 import com.alexis.financeiro.model.Lancamento;
+import com.alexis.financeiro.repository.Lancamentos;
 
 @Named
 @ViewScoped
@@ -24,8 +25,8 @@ public class ConsultaLancamentosBean implements Serializable {
 	
 	public void consultar() {
 		EntityManager manager = JpaUtil.getEntityManager();
-		TypedQuery<Lancamento> query = manager.createQuery("from Lancamento", Lancamento.class);
-		this.lancamentos = query.getResultList();
+		Lancamentos lancamentos = new Lancamentos(manager);
+		this.lancamentos = lancamentos.todos();
 		
 		manager.close();
 	}
