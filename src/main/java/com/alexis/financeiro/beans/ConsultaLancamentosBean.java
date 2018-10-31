@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 import com.alexis.bancodedados.JpaUtil;
 import com.alexis.financeiro.model.Lancamento;
