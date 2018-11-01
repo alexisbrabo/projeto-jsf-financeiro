@@ -21,58 +21,56 @@
 			<h:messages showDetail="false" showSummary="true" />
 
 			<h:panelGrid columns="2">
-			
-				<h:outputLabel value="Tipo" />
-				<h:selectOneRadio value="#{cadastroLancamentoBean.lancamento.tipo}"
-					label="Tipo do lançamento">
+
+
+				<p:outputLabel value="Tipo" for="tipo" />
+				<p:selectOneButton id="tipo"
+					value="#{cadastroLancamentoBean.lancamento.tipo}">
 					<f:selectItems value="#{cadastroLancamentoBean.tiposLancamentos}"
-						var="tipoLancamento" itemValue="#{tipoLancamento}" />
-				</h:selectOneRadio>
+						var="tipoLancamento" itemValue="#{tipoLancamento}"
+						itemLabel="#{tipoLancamento.descricao}" />
+				</p:selectOneButton>
 				
-				<h:outputLabel value="Pessoa" />
-				<h:selectOneMenu value="#{cadastroLancamentoBean.lancamento.pessoa}"
-					label="Pessoa">
+				<p:outputLabel value="Pessoa" for="pessoa" />
+				<p:selectOneMenu value="#{cadastroLancamentoBean.lancamento.pessoa}"
+					filter="true" filterMatchMode="contains" id="pessoa">
 					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
 					<f:selectItems value="#{cadastroLancamentoBean.todasPessoas}"
 						var="pessoa" itemValue="#{pessoa}" itemLabel="#{pessoa.nome}" />
-				</h:selectOneMenu>
-				
-				<p:outputLabel value="Descrição" for="descricao"/>
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Descrição" for="descricao" />
 				<p:inputText size="60"
 					value="#{cadastroLancamentoBean.lancamento.descricao}"
 					id="descricao" />
-					
-				<h:outputLabel value="Valor" />
-				<h:inputText size="12"
+
+				<p:outputLabel value="Valor" for="valor" />
+				<p:inputText size="12" id="valor"
 					value="#{cadastroLancamentoBean.lancamento.valor}" label="Valor">
 					<f:convertNumber locale="pt_BR" maxFractionDigits="2"
 						minFractionDigits="2" />
-				</h:inputText>
+				</p:inputText>
 
-				<h:outputLabel value="Data de Vencimento" />
-				<h:inputText size="12"
+				<p:outputLabel value="Data de Vencimento" for="dataVencimento" />
+				<p:calendar size="12" id="dataVencimento" type="localDate" pattern="dd/MM/yyyy" 
 					value="#{cadastroLancamentoBean.lancamento.dataVencimento}"
 					label="Data de vencimento">
 					<f:ajax render="@this dataPagamento" execute="@this dataPagamento"
 						listener="#{cadastroLancamentoBean.dataVencimentoAlterada}" />
-					<f:convertDateTime pattern="dd/MM/yyyy"
-						type="localDate" />
-				</h:inputText>
-				
-				<h:outputLabel value="Data de Pagamento" />
-				<h:inputText size="12"
+				</p:calendar>
+
+				<p:outputLabel value="Data de Pagamento" for="dataPagamento" />
+				<p:calendar size="12" id="dataPagamento" type="localDate" pattern="dd/MM/yyyy"
 					value="#{cadastroLancamentoBean.lancamento.dataPagamento}"
-					label="Data de pagamento" id="dataPagamento">
-					<f:convertDateTime pattern="dd/MM/yyyy"
-						type="localDate" />
-				</h:inputText>
+					label="Data de pagamento">
+				</p:calendar>
 
 				<h:outputLabel />
 				<h:commandButton value="Salvar"
 					action="#{cadastroLancamentoBean.salvar}">
 					<f:ajax execute="@form" render="@form" />
 				</h:commandButton>
-				
+
 			</h:panelGrid>
 		</h:form>
 
