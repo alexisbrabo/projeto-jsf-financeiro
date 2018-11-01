@@ -11,10 +11,10 @@ import com.alexis.financeiro.model.Pessoa;
 import com.alexis.financeiro.repository.Pessoas;
 
 @FacesConverter(forClass = Pessoa.class)
-public class PessoaConverter implements Converter{
+public class PessoaConverter implements Converter<Pessoa>{
 
 	@Override
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+	public Pessoa getAsObject(FacesContext context, UIComponent component, String value) {
 		Pessoa retorno = null;
 		EntityManager manager = JpaUtil.getEntityManager();
 		try {
@@ -29,7 +29,7 @@ public class PessoaConverter implements Converter{
 	}
 
 	@Override
-	public String getAsString(FacesContext context, UIComponent component, Object value) {
+	public String getAsString(FacesContext context, UIComponent component, final Pessoa value) {
 		if (value != null) {
 			return ((Pessoa) value).getId().toString();
 		}
