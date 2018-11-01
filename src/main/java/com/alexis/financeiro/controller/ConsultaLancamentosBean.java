@@ -1,4 +1,4 @@
-package com.alexis.financeiro.beans;
+package com.alexis.financeiro.controller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-import com.alexis.bancodedados.JpaUtil;
+import com.alexis.financeiro.bancodedados.JpaUtil;
 import com.alexis.financeiro.model.Lancamento;
 import com.alexis.financeiro.repository.Lancamentos;
 

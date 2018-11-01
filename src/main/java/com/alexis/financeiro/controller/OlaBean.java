@@ -1,4 +1,4 @@
-package com.alexis.financeiro.beans;
+package com.alexis.financeiro.controller;
 
 import java.io.Serializable;
 

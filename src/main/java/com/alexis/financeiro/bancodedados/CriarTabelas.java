@@ -1,4 +1,4 @@
-package com.alexis.bancodedados;
+package com.alexis.financeiro.bancodedados;
 
 import javax.persistence.Persistence;
 

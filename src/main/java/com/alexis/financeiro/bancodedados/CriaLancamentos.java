@@ -1,4 +1,4 @@
-package com.alexis.bancodedados;
+package com.alexis.financeiro.bancodedados;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
