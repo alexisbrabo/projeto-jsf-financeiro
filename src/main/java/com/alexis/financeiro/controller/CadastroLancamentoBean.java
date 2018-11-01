@@ -5,18 +5,17 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 
-import com.alexis.financeiro.bancodedados.JpaUtil;
 import com.alexis.financeiro.model.Lancamento;
 import com.alexis.financeiro.model.Pessoa;
 import com.alexis.financeiro.model.TipoLancamento;
-import com.alexis.financeiro.repository.Lancamentos;
 import com.alexis.financeiro.repository.Pessoas;
 import com.alexis.financeiro.service.CadastroLancamentos;
+import com.alexis.financeiro.service.NegocioException;
 
 @Named
 @ViewScoped
@@ -27,40 +26,34 @@ public class CadastroLancamentoBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private Lancamento lancamento;
+	@Inject
+	private CadastroLancamentos cadastro;
+	@Inject
+	private Pessoas pessoas;
+
+	private Lancamento lancamento = new Lancamento();
 	private List<Pessoa> todasPessoas;
 
 	public void prepararCadastro() {
-		EntityManager manager = JpaUtil.getEntityManager();
-		try {
-			Pessoas pessoas = new Pessoas(manager);
-			this.todasPessoas = pessoas.todas();
-		} finally {
-			manager.close();
-		}
-		
-		this.lancamento = new Lancamento();
+		this.todasPessoas = this.pessoas.todas();
 	}
 
 	public void salvar() {
-		EntityManager manager = JpaUtil.getEntityManager();
-		EntityTransaction trx = manager.getTransaction();
 		FacesContext context = FacesContext.getCurrentInstance();
-
 		try {
-			trx.begin();
-			CadastroLancamentos cadastro = new CadastroLancamentos(new Lancamentos(manager));
-			cadastro.salvar(this.lancamento);
-
+			this.cadastro.salvar(this.lancamento);
 			this.lancamento = new Lancamento();
-			context.addMessage(null, new FacesMessage("Lançamento Salvo com sucesso"));
-		} catch (Exception e) {
-			trx.rollback();
+			context.addMessage(null, new FacesMessage("Lançamento salvo com sucesso!"));
+		} catch (NegocioException e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
 			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
 			context.addMessage(null, mensagem);
-		} finally {
-			manager.close();
+		}
+	}
+
+	public void dataVencimentoAlterada(AjaxBehaviorEvent event) {
+		if (this.lancamento.getDataPagamento() == null) {
+			this.lancamento.setDataPagamento(this.lancamento.getDataVencimento());
 		}
 	}
 
