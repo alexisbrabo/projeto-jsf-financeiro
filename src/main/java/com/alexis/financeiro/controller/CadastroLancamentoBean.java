@@ -37,6 +37,7 @@ public class CadastroLancamentoBean implements Serializable {
 	public void prepararCadastro() {
 		if (lancamento == null) {
 			lancamento = new Lancamento();
+			lancamento.setTipo(TipoLancamento.RECEITA);
 		}
 		this.todasPessoas = this.pessoas.todas();
 	}

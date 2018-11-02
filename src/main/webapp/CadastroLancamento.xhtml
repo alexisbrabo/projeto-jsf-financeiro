@@ -33,6 +33,7 @@
 					<f:selectItems value="#{cadastroLancamentoBean.tiposLancamentos}"
 						var="tipoLancamento" itemValue="#{tipoLancamento}"
 						itemLabel="#{tipoLancamento.descricao}" />
+						<p:ajax event="change" update="@this dataPagamentoLabel" />
 				</p:selectOneButton>
 
 				<p:outputLabel value="Pessoa" for="pessoa" />
@@ -67,7 +68,8 @@
 						listener="#{cadastroLancamentoBean.dataVencimentoAlterada}" />
 				</p:calendar>
 
-				<p:outputLabel value="Data de Pagamento" for="dataPagamento" />
+				<p:outputLabel value="#{cadastroLancamentoBean.lancamento.tipo.descricao.equalsIgnoreCase('receita') ?
+				 'Data de Recebimento' : 'Data de Pagamento'}" id="dataPagamentoLabel" for="dataPagamento" />
 				<p:calendar size="12" id="dataPagamento" type="localDate"
 					pattern="dd/MM/yyyy"
 					value="#{cadastroLancamentoBean.lancamento.dataPagamento}"
