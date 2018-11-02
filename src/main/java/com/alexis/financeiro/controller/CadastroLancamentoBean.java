@@ -31,10 +31,13 @@ public class CadastroLancamentoBean implements Serializable {
 	@Inject
 	private Pessoas pessoas;
 
-	private Lancamento lancamento = new Lancamento();
+	private Lancamento lancamento;
 	private List<Pessoa> todasPessoas;
 
 	public void prepararCadastro() {
+		if (lancamento == null) {
+			lancamento = new Lancamento();
+		}
 		this.todasPessoas = this.pessoas.todas();
 	}
 

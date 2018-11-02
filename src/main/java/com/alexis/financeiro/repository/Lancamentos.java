@@ -26,6 +26,18 @@ public class Lancamentos implements Serializable {
 	public void adicionar(Lancamento lancamento) {
 		this.manager.persist(lancamento);
 	}
+	
+	public void guardar(Lancamento lancamento) {
+		this.manager.merge(lancamento);
+	}
+	
+	public void remover(Lancamento lancamento) {
+		this.manager.remove(lancamento);
+	}
+	
+	public Lancamento porId(Long id) {
+		return this.manager.find(Lancamento.class, id);
+	}
 
 	public List<Lancamento> todos() {
 		TypedQuery<Lancamento> query = manager.createQuery("from Lancamento", Lancamento.class);
