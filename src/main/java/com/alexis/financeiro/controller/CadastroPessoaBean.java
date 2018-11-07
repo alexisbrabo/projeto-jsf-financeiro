@@ -35,7 +35,6 @@ public class CadastroPessoaBean implements Serializable {
             this.cadastro.salvar(this.pessoa);
             this.pessoa = new Pessoa();
             context.addMessage(null, new FacesMessage("Pessoa salva com sucesso!"));
-            pessoa = new Pessoa();
         } catch (NegocioException e) {
             FacesMessage mensagem = new FacesMessage(e.getMessage());
             mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);

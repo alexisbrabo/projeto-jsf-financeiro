@@ -78,9 +78,8 @@
 
 				<p:outputLabel />
 				<p:commandButton value="Salvar" icon="ui-icon-disk"
-					action="#{cadastroLancamentoBean.salvar}">
-					<p:ajax process="@form" update="@form" />
-				</p:commandButton>
+					action="#{cadastroLancamentoBean.salvar}" update="@form"/>
+					
 
 			</h:panelGrid>
 		</h:form>
