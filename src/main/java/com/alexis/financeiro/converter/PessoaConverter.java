@@ -23,7 +23,7 @@ public class PessoaConverter implements Converter<Pessoa>{
 		EntityManager manager = JpaUtil.getEntityManager();
 		try {
 			if (value != null && !"".equals(value)) {
-				retorno = this.pessoas.porId(new Long(value));
+				retorno = (Pessoa) this.pessoas.porId(new Long(value), Pessoa.class);
 			}
 			return retorno;
 		} finally {

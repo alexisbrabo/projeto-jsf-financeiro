@@ -18,50 +18,50 @@ import com.alexis.financeiro.service.NegocioException;
 @ViewScoped
 public class ConsultaLancamentosBean implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	private List<Lancamento> lancamentos;
+    private List<Lancamento> lancamentos;
 
-	private Lancamento lancamentoSelecionado;
+    private Lancamento lancamentoSelecionado;
 
-	@Inject
-	private CadastroLancamentos cadastro;
+    @Inject
+    private CadastroLancamentos cadastro;
 
-	@Inject
-	private Lancamentos lancamentosRepository;
+    @Inject
+    private Lancamentos lancamentosRepository;
 
-	public void consultar() {
-		this.lancamentos = lancamentosRepository.todos();
-	}
+    public void consultar() {
+        this.lancamentos = lancamentosRepository.todos();
+    }
 
-	public void excluir() {
-		FacesContext context = FacesContext.getCurrentInstance();
+    public void excluir() {
+        FacesContext context = FacesContext.getCurrentInstance();
 
-		try {
-			this.cadastro.excluir(lancamentoSelecionado);
-			this.consultar();
+        try {
+            this.cadastro.excluir(lancamentoSelecionado);
+            this.consultar();
 
-			context.addMessage(null, new FacesMessage("Lançamento excluído com sucesso"));
-		} catch (NegocioException e) {
-			FacesMessage mensagem = new FacesMessage(e.getMessage());
-			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-			context.addMessage(null, mensagem);
-		}
+            context.addMessage(null, new FacesMessage("Lançamento excluído com sucesso"));
+        } catch (NegocioException e) {
+            FacesMessage mensagem = new FacesMessage(e.getMessage());
+            mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(null, mensagem);
+        }
 
-	}
+    }
 
-	public List<Lancamento> getLancamentos() {
-		return lancamentos;
-	}
+    public List<Lancamento> getLancamentos() {
+        return lancamentos;
+    }
 
-	public Lancamento getLancamentoSelecionado() {
-		return lancamentoSelecionado;
-	}
+    public Lancamento getLancamentoSelecionado() {
+        return lancamentoSelecionado;
+    }
 
-	public void setLancamentoSelecionado(Lancamento lancamentoSelecionado) {
-		this.lancamentoSelecionado = lancamentoSelecionado;
-	}
+    public void setLancamentoSelecionado(Lancamento lancamentoSelecionado) {
+        this.lancamentoSelecionado = lancamentoSelecionado;
+    }
 }
