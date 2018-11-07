@@ -1,18 +1,14 @@
 package com.alexis.financeiro.controller;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.alexis.financeiro.model.Lancamento;
 import com.alexis.financeiro.model.Pessoa;
-import com.alexis.financeiro.model.TipoLancamento;
 import com.alexis.financeiro.service.CadastroPessoas;
 import com.alexis.financeiro.service.NegocioException;
 
@@ -39,6 +35,7 @@ public class CadastroPessoaBean implements Serializable {
             this.cadastro.salvar(this.pessoa);
             this.pessoa = new Pessoa();
             context.addMessage(null, new FacesMessage("Pessoa salva com sucesso!"));
+            pessoa = new Pessoa();
         } catch (NegocioException e) {
             FacesMessage mensagem = new FacesMessage(e.getMessage());
             mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);

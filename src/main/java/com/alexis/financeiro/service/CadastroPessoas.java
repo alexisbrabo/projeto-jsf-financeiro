@@ -2,7 +2,6 @@ package com.alexis.financeiro.service;
 
 import com.alexis.financeiro.model.Pessoa;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.inject.Inject;
 
@@ -17,8 +16,7 @@ public class CadastroPessoas implements Serializable {
     private Pessoas pessoas;
 
     @Inject
-    public CadastroPessoas(Pessoas pessoas) {
-        this.pessoas = pessoas;
+    public CadastroPessoas() {
     }
 
     @Transactional
