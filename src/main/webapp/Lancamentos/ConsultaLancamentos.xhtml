@@ -60,19 +60,23 @@
 
                 <p:column>
                     <p:button icon="ui-icon-pencil" title="Editar"
-                              outcome="/CadastroLancamento">
+                              outcome="CadastroLancamento">
                         <f:param name="id" value="#{lancamento.id}"></f:param>
                     </p:button>
                     <p:commandButton icon="ui-icon-trash" title="Excluir"
                                      process="@this" update="@form"
                                      action="#{consultaLancamentosBean.excluir}">
+                        <p:confirm header="Exclusão de Lançamento" message="Você tem certeza?" icon="ui-icon-alert" />
                         <f:setPropertyActionListener value="#{lancamento}"
                                                      target="#{consultaLancamentosBean.lancamentoSelecionado}" />
                     </p:commandButton>
-                    
                 </p:column>
-
             </p:dataTable>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
         </h:form>
 
     </ui:define>

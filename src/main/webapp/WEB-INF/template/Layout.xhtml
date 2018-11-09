@@ -31,14 +31,14 @@
             <p:menubar style="margin-top: -20px; margin-bottom: 20px">
                 <p:submenu label="Cadastros">
                     <p:menuitem value="Pessoa" 
-                                action="/CadastroPessoa?faces-redirect=true"/>
+                                action="/Pessoas/CadastroPessoa?faces-redirect=true"/>
                     <p:menuitem value="Lançamento"
-                                action="/CadastroLancamento?faces-redirect=true" />
+                                action="/Lancamentos/CadastroLancamento?faces-redirect=true" />
                 </p:submenu>
                 <p:submenu label="Consultas">
                     <p:menuitem value="Pessoas" />
                     <p:menuitem value="Lançamentos"
-                                action="/ConsultaLancamentos?faces-redirect=true" />
+                                action="/Lancamentos/ConsultaLancamentos?faces-redirect=true" />
                 </p:submenu>
                 <p:submenu label="Sistema">
                     <p:menuitem value="Sair" action="#{loginBean.logout}" />
