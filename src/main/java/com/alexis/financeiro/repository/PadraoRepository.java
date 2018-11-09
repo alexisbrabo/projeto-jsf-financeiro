@@ -2,12 +2,10 @@ package com.alexis.financeiro.repository;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 public class PadraoRepository {
 
     @Inject
-    @PersistenceContext(name="FinanceiroPU")
     protected EntityManager manager;
 
     public void adicionar(Object object) {

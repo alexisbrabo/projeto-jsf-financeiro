@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <f:metadata>
+        <f:viewAction action="#{consultaLancamentosBean.consultar}" />
+    </f:metadata>
+
+    <ui:define name="titulo">Consulta de Lançamentos</ui:define>
+
+    <ui:define name="corpo">
+
+        <h1>Consulta de lançamentos</h1>
+
+        <h:form id="frm">
+
+            <p:messages showDetail="false" showSummary="true">
+                <p:autoUpdate />
+            </p:messages>
+
+            <p:dataTable value="#{consultaLancamentosBean.lancamentos}"
+                         reflow="true" var="lancamento" paginator="true"
+                         paginatorPosition="bottom" rows="5">
+                <p:column headerText="Pessoa" sortBy="#{lancamento.pessoa.nome}">
+                    <h:outputText value="#{lancamento.pessoa.nome}" />
+                </p:column>
+
+                <p:column headerText="Descrição" sortBy="#{lancamento.descricao}">
+                    <h:outputText value="#{lancamento.descricao}" />
+                </p:column>
+
+                <p:column headerText="Tipo">
+                    <h:outputText value="#{lancamento.tipo.descricao}" />
+                </p:column>
+
+                <p:column headerText="Valor" sortBy="#{lancamento.valor}"
+                          style="text-align: right">
+                    <h:outputText value="#{lancamento.valor}" style="${lancamento.tipo.descricao.equals('Despesa') ? 'color: red' : 'color: blue'}">
+                        <f:convertNumber type="currency" locale="pt_BR" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Vencimento"
+                          sortBy="#{lancamento.dataVencimento}" style="text-align: center">
+                    <h:outputText value="#{lancamento.dataVencimento}">
+
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Pagamento"
+                          sortBy="#{lancamento.dataPagamento}" style="text-align: center">
+                    <h:outputText value="#{lancamento.dataPagamento}">
+
+                    </h:outputText>
+                </p:column>
+
+                <p:column>
+                    <p:button icon="ui-icon-pencil" title="Editar"
+                              outcome="CadastroLancamento">
+                        <f:param name="id" value="#{lancamento.id}"></f:param>
+                    </p:button>
+                    <p:commandButton icon="ui-icon-trash" title="Excluir"
+                                     process="@this" update="@form"
+                                     action="#{consultaLancamentosBean.excluir}">
+                        <p:confirm header="Exclusão de Lançamento" message="Você tem certeza?" icon="ui-icon-alert" />
+                        <f:setPropertyActionListener value="#{lancamento}"
+                                                     target="#{consultaLancamentosBean.lancamentoSelecionado}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
