@@ -23,7 +23,7 @@ public class LoginBean {
 		if ("admin".equals(this.nomeUsuario) && "123".equals(this.senha)) {
 			this.usuario.setNome(this.nomeUsuario);
 			this.usuario.setDataLogin(LocalDate.now());
-			return "Lancamentos/ConsultaLancamentos?faces-redirect=true";
+			return "Dashboard?faces-redirect=true";
 		} else {
 			FacesMessage mensagem = new FacesMessage("Usuário/senha inválidos!");
 			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
