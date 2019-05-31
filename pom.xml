@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.6.Final</version>
+            <version>5.4.2.Final</version>
             <scope>compile</scope>
         </dependency>
 
@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.3.6.Final</version>
+            <version>5.4.2.Final</version>
             <scope>compile</scope>
         </dependency>
 
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>6.0.13.Final</version>
+            <version>6.0.16.Final</version>
         </dependency>
 
         <!-- Driver JDBC do MySQL -->
@@ -89,7 +89,7 @@
         <dependency>
             <groupId>org.jboss</groupId>
             <artifactId>jandex</artifactId>
-            <version>2.0.5.Final</version>
+            <version>2.1.1.Final</version>
             <scope>compile</scope>
         </dependency>
 
@@ -105,7 +105,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>6.2</version>
+            <version>7.0</version>
             <scope>compile</scope>
         </dependency>
                 
@@ -113,9 +113,8 @@
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
-            <version>6.7.0</version>
+            <version>6.8.1</version>
         </dependency>
-
 
     </dependencies>
 

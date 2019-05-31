@@ -25,7 +25,7 @@
 
             <p:dataTable value="#{consultaLancamentosBean.lancamentos}"
                          reflow="true" var="lancamento" paginator="true"
-                         paginatorPosition="bottom" rows="5">
+                         paginatorPosition="bottom" rows="5" emptyMessage="Sem Lançamentos">
                 <p:column headerText="Pessoa" sortBy="#{lancamento.pessoa.nome}">
                     <h:outputText value="#{lancamento.pessoa.nome}" />
                 </p:column>
